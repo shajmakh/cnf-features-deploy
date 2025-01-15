@@ -10,7 +10,7 @@ COPY . .
 ENV GOFLAGS="-mod=vendor"
 RUN make test-bin
 
-WORKDIR /app/stresser
+WORKDIR ${UTILS_PATH}/stresser
 RUN go build -mod=vendor -o /stresser
 
 WORKDIR ${UTILS_PATH}/sctptester
