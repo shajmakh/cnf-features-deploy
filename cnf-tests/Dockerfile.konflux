@@ -28,6 +28,7 @@ FROM registry.redhat.io/ubi9/ubi-minimal:9.5
 
 RUN mkdir -p /usr/local/etc/cnf
 
+RUN ls -la ${PKG_PATH}/cnf-tests
 COPY --from=oc /usr/bin/oc /usr/bin/oc
 COPY --from=builder ${PKG_PATH}/cnf-tests/submodules/cluster-node-tuning-operator/build/_output/bin/latency-e2e.test /usr/bin/latency-e2e.test
 COPY --from=builder ${PKG_PATH}/cnf-tests/entrypoint/test-run.sh /usr/bin/test-run.sh
