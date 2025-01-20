@@ -1,13 +1,18 @@
 ARG PKG_PATH=/go/src/github.com/openshift-kni/cnf-features-deploy
-ARG UTILS_PATH=$PKG_PATH/cnf-tests/pod-utils
+ARG UTILS_PATH=${PKG_PATH}/cnf-tests/pod-utils
 
-FROM brew.registry.redhat.io/rh-osbs/openshift-ose-cli-rhel9:v4.19 AS oc
+#FROM brew.registry.redhat.io/rh-osbs/openshift-ose-cli-rhel9:v4.19 AS oc
 FROM brew.registry.redhat.io/rh-osbs/openshift-golang-builder:v1.23.2 AS builder
 
 WORKDIR $PKG_PATH
 COPY . .
 
 ENV GOFLAGS="-mod=vendor"
+RUN echo $UTILS_PATH 
+RUN echo ${UTILS_PATH}
+RUN echo $PKG_PATH 
+RUN echo ${PKG_PATH} 
+
 RUN make test-bin
 
 WORKDIR $UTILS_PATH/stresser
