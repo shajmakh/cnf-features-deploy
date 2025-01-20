@@ -13,8 +13,9 @@ RUN ls -la ${PKG_PATH}/cnf-tests/submodules/cluster-node-tuning-operator/build/_
 FROM registry.redhat.io/ubi9/ubi-minimal:9.5
 
 RUN mkdir -p /usr/local/etc/cnf
+RUN echo $PKG_PATH
 
-COPY --from=builder ${PKG_PATH}/cnf-tests/submodules/cluster-node-tuning-operator/build/_output/bin/latency-e2e.test /usr/bin/latency-e2e.test
+COPY --from=builder /go/src/github.com/openshift-kni/cnf-features-deploy/cnf-tests/submodules/cluster-node-tuning-operator/build/_output/bin/latency-e2e.test /usr/bin/latency-e2e.test
 COPY --from=builder ${PKG_PATH}/cnf-tests/entrypoint/test-run.sh /usr/bin/test-run.sh
 COPY --from=builder ${PKG_PATH}/cnf-tests/bin/mirror /usr/bin/mirror
 COPY --from=builder ${PKG_PATH}/cnf-tests/mirror/images.json /usr/local/etc/cnf
