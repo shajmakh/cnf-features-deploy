@@ -25,6 +25,8 @@ spec:
     value: quay.io/redhat-user-workloads/rhn-support-shajmakh-tenant/cnf-features-deploy:{{revision}}
   - name: dockerfile
     value: cnf-tests/Dockerfile.konflux
+  - name: prefetch-input
+    value: '{"type": "rpm", "path": "cnf-tests/.konflux"}'
   pipelineSpec:
     description: |
       This pipeline is ideal for building container images from a Containerfile while reducing network traffic.
@@ -186,6 +188,8 @@ spec:
       params:
       - name: input
         value: $(params.prefetch-input)
+      - name: dev-package-managers
+        value: "true"
       runAfter:
       - clone-repository
       taskRef:
