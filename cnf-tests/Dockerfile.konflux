@@ -1,4 +1,5 @@
 FROM brew.registry.redhat.io/rh-osbs/openshift-ose-cli-rhel9:v4.19 AS oc
+
 FROM brew.registry.redhat.io/rh-osbs/openshift-golang-builder:v1.23.2 AS builder-stresser
 ENV PKG_NAME=github.com/openshift-kni/cnf-features-deploy
 ENV PKG_PATH=/go/src/$PKG_NAME
