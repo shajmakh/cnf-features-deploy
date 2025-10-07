@@ -6,8 +6,8 @@
         "autoApprove": true,
         "automerge": true,
         "enabled": true,
-        "fileMatch": [
-            "\\.conf$"
+        "managerFilePatterns": [
+            "/\\.conf$/"
         ],
         "ignoreTests": false,
         "platformAutomerge": true,
@@ -21,9 +21,9 @@
     "pruneBranchAfterAutomerge": true,
     "tekton": {
         "enabled": true,
-        "fileMatch": [
-            "\\.yaml$",
-            "\\.yml$"
+        "managerFilePatterns": [
+            "/\\.yaml$/",
+            "/\\.yml$/"
         ],
         "ignoreTests": false,
         "includePaths": [
