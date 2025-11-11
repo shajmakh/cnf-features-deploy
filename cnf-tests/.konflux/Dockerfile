@@ -1,4 +1,4 @@
-ARG RHEL_VERSION=9.6
+ARG RHEL_VERSION=9.7
 
 FROM registry.redhat.io/openshift4/ose-cli-rhel9:v4.19 AS oc
 
